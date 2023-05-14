@@ -1,0 +1,2 @@
+# Spendy
+ Expenses Tracker App
