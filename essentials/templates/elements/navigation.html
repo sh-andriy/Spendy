@@ -25,6 +25,16 @@
                     Sign Out
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'transactions:add_income' %}">
+                    Add Income
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'transactions:add_expense' %}">
+                    Add Expense
+                </a>
+            </li>
         {% else %}
             <li class="nav-item ">
                 <a class="nav-link" href="{% url 'users:login' %}">
