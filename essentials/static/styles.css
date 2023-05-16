@@ -18,12 +18,12 @@
 }
 
 .main-body {
-    margin: 4em 7em 1em;
+    /*margin: 4em 7em 1em;*/
 }
 
 @media screen and (max-width: 767px) {
     .main-body {
-        margin: 4em 10% 1em;
+        /*margin: 4em 10% 1em;*/
     }
 }
 
@@ -36,5 +36,10 @@
 .nav-link-style {
     font-size: 1.15em !important;
     padding-left: 0.5em;
+}
+
+.sidebar-logo{
+    height: 15px;
+    width: auto;
 }
 
