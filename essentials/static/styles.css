@@ -1,45 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&family=Montserrat&display=swap");
 
 * {
-    font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .accent-style {
-    font-family: 'Lobster Two', cursive;
+  font-family: "Lobster Two", cursive;
 }
 
 .logo-style {
-    font-size: 3em;
+  font-size: 3em;
 }
 
 .container-navbar {
-    width: 15em;
-    padding-left: 1.5em;
+  width: 15em;
+  padding-left: 1.5em;
 }
 
 .main-body {
-    /*margin: 4em 7em 1em;*/
+  /*margin: 4em 7em 1em;*/
 }
 
 @media screen and (max-width: 767px) {
-    .main-body {
-        /*margin: 4em 10% 1em;*/
-    }
+  .main-body {
+    /*margin: 4em 10% 1em;*/
+  }
 }
 
 #sidebar {
-    height: 100vh;
+  height: 100vh;
 }
 
 /*---------------------------------NAVBAR-------------------------------------*/
 
 .nav-link-style {
-    font-size: 1.15em !important;
-    padding-left: 0.5em;
+  font-size: 1.15em !important;
+  padding-left: 0.5em;
 }
 
-.sidebar-logo{
-    height: 15px;
-    width: auto;
+.sidebar-logo {
+  height: 15px;
+  width: auto;
 }
 
+.income-form {
+  padding: 20px;
+}
+
+.page-name {
+  margin-bottom: 20px;
+}
