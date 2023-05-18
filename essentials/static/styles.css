@@ -50,3 +50,77 @@
 .page-name {
   margin-bottom: 20px;
 }
+
+.navbar-custom, .navbar-bg {
+  background-color: #99e2b4;
+}
+
+/*--------------------------------HOME---------------------------------------*/
+
+.list-bullet {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  margin-right: 29px;
+}
+
+#light-green {
+  background-color: #5DBFBD;
+}
+
+#dark-green {
+  background-color: #258277;
+}
+
+.home-button {
+  background-color: #469D89;
+  color: white;
+  width: 50%;
+}
+
+.view-more {
+  text-decoration: none;
+}
+
+.table {
+  background-color: #ECECEC;
+  border-radius: 19px;
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 25px;
+}
+
+.transaction-category {
+  text-align: center;
+}
+
+.transaction-price, .transaction-category, .transaction-date {
+  width: 25%;
+}
+
+.section-title {
+  font-size: 22px;
+  color: #096667;
+  font-weight: 500;
+}
+
+.income-info, .expenses-info {
+  padding: 4px 5px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #096667;
+  border-radius: 11px;
+}
+
+.expenses-info {
+  background-color: #E29999;
+}
+
+.income-info {
+  background-color: #99E2B4;
+}
+
+.btns-wrapper {
+  margin: 61px 0;
+}
