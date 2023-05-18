@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'users:home' %}">
@@ -35,6 +36,11 @@
                     Add Expense
                 </a>
             </li>
+            <li class="nav-item ">
+                <p class="nav-link" id="rate">
+                  *** **** / *** **** 
+                </p>
+            </li>
         {% else %}
             <li class="nav-item ">
                 <a class="nav-link" href="{% url 'users:login' %}">
@@ -46,4 +52,5 @@
       </ul>
     </div>
   </div>
+  <script src="../../static/navigation.js"></script>
 </nav>
