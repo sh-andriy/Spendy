@@ -1,3 +1,5 @@
+import requests
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.exceptions import ValidationError
@@ -13,7 +15,9 @@ from .models import User
 
 
 def home(request):
-    return render(request, 'home.html', context={'home_page': True})
+    a = requests.get('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5').json()[0]['buy']
+
+    return render(request, 'home.html', context={'home_page': True, 'usd_price': a})
 
 
 def sing_in(request):
