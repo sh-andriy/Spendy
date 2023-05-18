@@ -11,7 +11,7 @@
     <form>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Category</label>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" name="expense_category">
           <option selected>None</option>
           <option value="1">Sport</option>
           <option value="2">Health</option>
@@ -24,7 +24,7 @@
       </div>
       <div class="mb-3">
         <label for="inputNumber" class="form-label">Amount</label>
-        <input type="number" class="form-control" id="inputNumber" />
+        <input type="number" class="form-control" id="inputNumber" name="expense_amount"/>
       </div>
       <div class="d-flex justify-content-center gap-3">
         <button type="submit" class="btn btn-success">Add</button>

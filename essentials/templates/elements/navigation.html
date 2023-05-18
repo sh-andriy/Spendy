@@ -37,7 +37,8 @@
                 Admin
               </a>
             </li>
-            {% endif %} {% if user.is_authenticated %}
+            {% endif %}
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'users:logout' %}"> Sign Out </a>
             </li>
@@ -51,8 +52,13 @@
                 Add Expense
               </a>
             <li class="nav-item ">
-                <a class="nav-link" href="{% url 'transactions:add_expense' %}">
-                    Add Expense
+                <a class="nav-link" href="{% url 'transactions:credit' %}">
+                    Credit
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'transactions:deposit' %}">
+                    Deposit
                 </a>
             </li>
             <li class="nav-item ">

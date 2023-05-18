@@ -12,6 +12,7 @@ from django.contrib.auth import (
 )
 
 from .models import User
+from transactions.models import Balance
 
 
 def home(request):
@@ -55,6 +56,12 @@ def sing_up(request):
             email=email,
             password=password
         )
+
+        balance = Balance(
+            user=user
+        )
+        balance.save()
+
 
         login(request, user)
 
