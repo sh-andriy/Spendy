@@ -1,5 +1,3 @@
-import requests
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.exceptions import ValidationError
@@ -15,15 +13,9 @@ from .models import User
 from transactions.models import Balance
 
 
-def home(request):
-    a = requests.get('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5').json()[0]['buy']
-
-    return render(request, 'home.html', context={'home_page': True, 'usd_price': a})
-
-
 def sing_in(request):
     if request.user.is_authenticated:
-        return redirect("users:home")
+        return redirect("transactions:home")
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
@@ -31,7 +23,7 @@ def sing_in(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You are now logged in as " + email)
-            return redirect("users:home")
+            return redirect("transactions:home")
         else:
             messages.error(request, "Invalid username or password.")
     return render(request=request, template_name="accounts/login.html", context={"login_page": True})
@@ -67,7 +59,7 @@ def sing_up(request):
 
         messages.success(request, "Welcome, home :)")
 
-        return redirect("users:home")
+        return redirect("transactions:home")
 
     return render(request, "accounts/register.html", context={"login_page": True})
 
@@ -75,4 +67,4 @@ def sing_up(request):
 @login_required
 def sign_out(request):
     logout(request)
-    return redirect("users:home")
+    return redirect("transactions:home")

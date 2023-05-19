@@ -3,7 +3,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'users:home' %}">
+        <a class="navbar-brand" href="{% url 'transactions:home' %}">
           <img
             src="../../static/imgs/spendy.png"
             alt="logo"
@@ -27,7 +27,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="{% url 'users:home' %}"
+                href="{% url 'transactions:home' %}"
                 >Home</a
               >
             </li>
@@ -63,7 +63,12 @@
             </li>
             <li class="nav-item ">
                 <p class="nav-link" id="rate">
-                  *** **** / *** ****
+                  USD {{ usd_price }} / *** ****
+                </p>
+            </li>
+            <li class="nav-item ">
+                <p class="nav-link" id="rate">
+                    {{ user_balance.amount }}
                 </p>
             </li>
             {% else %}

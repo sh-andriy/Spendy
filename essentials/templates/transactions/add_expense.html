@@ -8,18 +8,14 @@
   <div
     class="col-lg-6 col-md-12 income-form mx-auto bg-light border border-secondary rounded"
   >
-    <form>
+    <form method="POST">
+    {% csrf_token %}
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Category</label>
         <select class="form-select" aria-label="Default select example" name="expense_category">
-          <option selected>None</option>
-          <option value="1">Sport</option>
-          <option value="2">Health</option>
-          <option value="3">Shopping</option>
-          <option value="1">Clothes</option>
-          <option value="2">Attractions</option>
-          <option value="3">Public transport</option>
-          <option value="3">Food</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
         </select>
       </div>
       <div class="mb-3">
