@@ -108,7 +108,6 @@ def edit_income(request, transaction_id):
         'categories': categories,
     }
 
-
     return render(request, 'transactions/edit_income.html', context=context)
 
 
@@ -138,7 +137,6 @@ def edit_expense(request, transaction_id):
         'transaction': transaction,
         'categories': categories,
     }
-
 
     return render(request, 'transactions/edit_expense.html', context=context)
 

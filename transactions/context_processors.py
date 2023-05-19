@@ -9,10 +9,10 @@ def nav(request):
 
         # Check if the response is not empty and contains the necessary data
         if response and len(response) >= 2:
-            usd_buy = float(response[0].get('buy', 0))
-            usd_sell = float(response[0].get('sale', 0))
-            eur_buy = float(response[1].get('buy', 0))
-            eur_sell = float(response[1].get('sale', 0))
+            usd_buy = float(response[1].get('buy', 0))
+            usd_sell = float(response[1].get('sale', 0))
+            eur_buy = float(response[0].get('buy', 0))
+            eur_sell = float(response[0].get('sale', 0))
 
             user_balance = Balance.objects.get(user=request.user)
 
