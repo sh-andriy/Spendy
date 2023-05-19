@@ -10,14 +10,14 @@ from .models import Balance, Transaction, Category
 
 def home(request):
     context = {}
-    # if request.user.is_authenticated:
-    #     a = requests.get('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5').json()[0]['buy']
-    #     user_balance = Balance.objects.get(user=request.user)
-    #     context = {
-    #         'home_page': True,
-    #         'user_balance': user_balance,
-    #         'usd_price': a,
-    #     }
+    if request.user.is_authenticated:
+        a = requests.get('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5').json()[0]['buy']
+        user_balance = Balance.objects.get(user=request.user)
+        context = {
+            'home_page': True,
+            'user_balance': user_balance,
+            'usd_price': a,
+        }
 
     return render(request, 'home.html', context=context)
 
