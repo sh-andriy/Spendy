@@ -3,29 +3,33 @@
 
 {% block body %}
 
-<h1 class="page-name text-center">Add Expense</h1>
+<h1 class="page-name text-center">Add Deposit</h1>
 <div class="row">
-  <div
-    class="col-lg-6 col-md-12 income-form mx-auto bg-light border border-secondary rounded"
-  >
-    <form>
+  <div class="col-lg-6 col-md-12 income-form mx-auto bg-light border border-secondary rounded">
+    <form method="POST">
+      {% csrf_token %}
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Category</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>None</option>
-          <option value="1">Sport</option>
-          <option value="2">Health</option>
-          <option value="3">Shopping</option>
-          <option value="1">Clothes</option>
-          <option value="2">Attractions</option>
-          <option value="3">Public transport</option>
-          <option value="3">Food</option>
-        </select>
+        <div class="upperText">
+          <label for="inputNumber" class="form-label">Amount</label>
+          <input type="number" class="rangeNum" name="inputNumber" id="inputNumber" value="0" min="0" max="100000"  oninput="cloneValue(this.value)">
+        </div>
+        <input type="range" class="range" id="range" min="0" max="100000" step="1" value="0" oninput="getRange(this.value)" />
+        <div class="lowerText1">
+          <label class="form-label text-center">0</label>
+          <label  class="form-label text-center">100.000</label>
+        </div>
+        <div class="lowerText2">
+          <label  class="form-label text-center">
+            Potential income<br>
+            <p id="potentialIncome" name="income">0</p>
+          </label>
+          <label class="form-label text-center">
+            Annual percentage<br>
+            11.5 %
+          </label>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="inputNumber" class="form-label">Amount</label>
-        <input type="number" class="form-control" id="inputNumber" />
-      </div>
+
       <div class="d-flex justify-content-center gap-3">
         <button type="submit" class="btn btn-success">Add</button>
         <button class="btn btn-outline-success">Cancel</button>

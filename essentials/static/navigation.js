@@ -50,3 +50,29 @@
 // function roundToTwoDecimal(number) {
 //     return parseFloat(number).toFixed(2);
 // }
+
+// ---------------------------------DEPOSIT-------------------------------------
+
+
+function percentage(percent, total) {
+    return ((total/100)*percent).toFixed(2)
+};
+
+function getRange(val){
+    const result = parseFloat(val) + parseFloat(percentage(11.5, val));
+    document.getElementById("potentialIncome").innerHTML = result;
+    document.getElementById("inputNumber").value = val;
+};
+
+function cloneValue(val) {
+    if(val > 100000){
+        val = 100000;
+        inputNumber.value = val;
+    }else if(val <= 0){
+        val = 0;
+        inputNumber.value = val;
+    }
+    document.getElementById("range").value = val;
+    const result = parseFloat(val) + parseFloat(percentage(11.5, val));
+    document.getElementById("potentialIncome").innerHTML = result.toFixed(2);
+};
