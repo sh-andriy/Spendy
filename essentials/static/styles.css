@@ -65,7 +65,7 @@
 
 .nav-item {
   display: flex;
-  align-items: center;
+  /*align-items: ;*/
 }
 
 .nav-item p {
@@ -82,6 +82,40 @@
 }
 
 /*--------------------------------HOME---------------------------------------*/
+
+@media (max-width: 1000px) {
+  .home_responsivnes {
+    width: 100%;
+  }
+}
+
+@media (min-width:  1001px) {
+  .home_responsivnes {
+    width: 30%;
+  }
+
+  .second_div {
+    width: 50%;
+  }
+}
+
+.mi-custom:hover {
+  background-color: #3BC849;
+  transition: 1s;
+  border-radius: 1rem;
+}
+
+.mi-custom2:hover {
+  background-color: red;
+  transition: 1s;
+  border-radius: 1rem;
+}
+
+.mi-custom3:hover {
+  background-color: orange;
+  border-radius: 1rem;
+  transition: 0.17s;
+}
 
 .list-bullet {
   width: 16px;
@@ -142,7 +176,7 @@
 .transaction-category {
   text-align: center;
   color: #096667;
-  width: 15%;
+  width: 20%;
 }
 
 .transaction-price {

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h1 class="page-name text-center">Edit Deposit</h1>
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 mx-auto">
+      <div class="income-form shadow border-top rounded mb-5">
+     <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <div class="upperText">
+          <label for="inputNumber" class="form-label">Amount</label>
+          <input type="number" class="rangeNum" name="deposit_amount" id="inputNumber" value="{{ deposit.amount }}" min="0" max="100000" oninput="cloneValue(this.value)">
+        </div>
+        <input type="range" class="range" id="range" min="0" max="100000" step="1" value="{{ deposit.amount }}" oninput="getRange(this.value)" />
+        <div class="lowerText1">
+          <label class="form-label text-center">0</label>
+          <label class="form-label text-center">100 000</label>
+        </div>
+        <div class="lowerText2">
+          <label class="form-label text-center">
+            Yearly Income<br>
+            <p id="potentialIncome">{{ deposit.income }}$</p>
+            <input type="hidden" name="deposit_income" value="{{ deposit.income }}" id="depositIncomeField">
+          </label>
+          <label class="form-label text-center">
+            Profit<br>
+            <p id="profitValue">{{ deposit.profit }}$</p>
+            <input type="hidden" name="deposit_profit" value="{{ deposit.profit }}" id="depositProfitField">
+          </label>
+          <label class="form-label text-center">
+            Annual percentage<br>
+            11.5%
+          </label>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button type="submit" class="btn home-button" style="width: 100%;">Update</button>
+        <a href="{% url 'transactions:deposit' %}" type='button' class="btn btn-cancel" style="width: 100%;">Cancel</a>
+      </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+<script src="{% static 'navigation.js' %}"></script>
+{% endblock %}

@@ -1,15 +1,16 @@
 {% load static %}
 <div class="navbar-bg">
-  <div class="container">
+  <div class="" >
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'transactions:home' %}">
           <img
-            src="../../static/imgs/spendy.png"
+            src="{% static 'imgs/spendy.png' %}"
             alt="logo"
             class="sidebar-logo"
           />
         </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -24,14 +25,6 @@
         <div class="collapse navbar-collapse m-auto" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
             <div class="d-flex flex-column flex-lg-row gap-lg-4">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{% url 'transactions:home' %}"
-                >Home</a
-              >
-            </li>
             {% if user.is_superuser %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">
@@ -40,6 +33,11 @@
             </li>
             {% endif %}
             {% if user.is_authenticated %}
+            <li class="nav-item ">
+                <p class="nav-link fw-bolder" id="rate">
+                    Balance: {{ user_balance.amount }}$
+                </p>
+            </li>
               <li class="nav-item ">
                 <a class="nav-link" href="{% url 'transactions:credit' %}">
                     Credit
@@ -51,24 +49,42 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <p class="nav-link" id="rate">
-                  USD {{ usd_price }} / *** ****
-                </p>
+
+                <select class="form-select" aria-label="Default select example">
+                  <option selected disabled>Privat24 API</option>
+                  <option value="1 " disabled>Exchange Rate Buy/Sell</option>
+                  <option value="2">USD {{ usd_buy }} / {{ usd_sell }}</option>
+                  <option value="3">EUR {{ eur_buy }} / {{ eur_sell }}</option>
+                </select>
             </li>
-            <li class="nav-item ">
-                <p class="nav-link" id="rate">
-                    {{ user_balance.amount }}
-                </p>
-            </li>
+
+
             </div>
             <div class="d-flex gap-2">
               <li class="nav-item">
-                <a class="nav-link" href=""><img class="navbar-icon" src="../../static/imgs/profile.svg" alt="profile"></a>
+                <a class="nav-link " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" ><img class="navbar-icon mi-custom3" src="{% static 'imgs/profile.svg' %}" alt="profile"></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'users:logout' %}"><img class="navbar-icon" src="../../static/imgs/logout.svg" alt="logout"></a>
+                <a class="nav-link" href="{% url 'users:logout' %}"><img class="navbar-icon" src="{% static 'imgs/logout.svg' %}" alt="logout"></a>
               </li>
             </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Coming Soon! 🥳</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        This feature is coming soon! Be the first one to test it out 😎
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'users:login' %}"> Sign In </a>

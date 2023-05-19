@@ -87,3 +87,4 @@ function cloneValue(val) {
   document.getElementById("depositProfitField").value = parseFloat(percentage(11.5, val));
 }
 
+

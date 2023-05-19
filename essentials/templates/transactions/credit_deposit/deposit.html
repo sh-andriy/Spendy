@@ -2,82 +2,86 @@
 {% load static %}
 
 {% block body %}
-
-<h1 class="page-name text-center">Add Deposit</h1>
 <div class="row">
-  <div class="col-lg-6 col-md-12 income-form mx-auto bg-light border border-secondary rounded">
-    <form method="POST">
-      {% csrf_token %}
-      <div class="mb-3">
-        <div class="upperText">
-          <label for="inputNumber" class="form-label">Amount</label>
-          <input type="number" class="rangeNum" name="deposit_amount" id="inputNumber" value="0" min="0" max="100000" oninput="cloneValue(this.value)">
-        </div>
-        <input type="range" class="range" id="range" min="0" max="100000" step="1" value="0" oninput="getRange(this.value)" />
-        <div class="lowerText1">
-          <label class="form-label text-center">0</label>
-          <label class="form-label text-center">100.000</label>
-        </div>
-        <div class="lowerText2">
-          <label class="form-label text-center">
-            Yearly Income<br>
-            <p id="potentialIncome">0</p>
-            <input type="hidden" name="deposit_income" value="0" id="depositIncomeField">
-          </label>
-          <label class="form-label text-center">
-            Profit<br>
-            <p id="profitValue">0</p>
-            <input type="hidden" name="deposit_profit" value="0" id="depositProfitField">
-          </label>
-          <label class="form-label text-center">
-            Annual percentage<br>
-            11.5 %
-          </label>
-        </div>
-      </div>
+    <div class="col-lg-10 col-md-10 col-sm-10 mx-auto">
+        <div class="income-form shadow border-top rounded mb-5">
+            <h1 class="page-name text-center">Deposit</h1>
+            <form method="POST">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="upperText">
+                      <label for="inputNumber" class="form-label">Amount</label>
+                      <input type="number" class="rangeNum" name="deposit_amount" id="inputNumber" value="0" min="0" max="100000" oninput="cloneValue(this.value)">
+                    </div>
+                    <input type="range" class="range" id="range" min="0" max="100000" step="1" value="0" oninput="getRange(this.value)" />
+                    <div class="lowerText1">
+                      <label class="form-label text-center">0</label>
+                      <label class="form-label text-center">100 000</label>
+                    </div>
+                    <div class="lowerText2">
+                      <label class="form-label text-center">
+                        Yearly Income<br>
+                        <p id="potentialIncome">0</p>
+                        <input type="hidden" name="deposit_income" value="0" id="depositIncomeField">
+                      </label>
+                      <label class="form-label text-center">
+                        Profit<br>
+                        <p id="profitValue">0</p>
+                        <input type="hidden" name="deposit_profit" value="0" id="depositProfitField">
+                      </label>
+                      <label class="form-label text-center">
+                        Annual percentage<br>
+                        11.5 %
+                      </label>
+                    </div>
+                  </div>
 
-      <div class="d-flex justify-content-center gap-3">
-        <button type="submit" class="btn btn-success">Add</button>
-        <button class="btn btn-outline-success">Cancel</button>
-      </div>
-    </form>
-  </div>
+                  <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn home-button" style="width: 100%;">Add</button>
+                    <a type="button" href="{% url 'transactions:home' %}" class="btn btn-cancel" style="width: 100%;">Cancel</a>
+                  </div>
+                </form>
+        </div>
+    </div>
 </div>
+{% if deposits %}
+    <div class="row">
+        <h2>Transactions:</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 mt-5 d-flex justify-content-center">
+            <div class="table-responsive" style="width: 100%">
+                <table class="table text-center">
+                    <tbody class="justify-content-between " >
+                    <tr>
+                        <th class="col">Investment $</th>
+                        <th class="col">Percentage</th>
+                        <th class="col">Profit a year</th>
+                        <th class="col">Edit</th>
+                        <th class="col">Delete</th>
+                    </tr>
+                    {% for deposit in deposits reversed %}
+                        <tr>
+                            <th class="">{{ deposit.amount }}$</th>
+                            <td>{{ deposit.percentage }}%</td>
+                            {% if deposit.percentage == 11.5 %}
+                            <td class="text-success">+{{ deposit.profit }}$</td>
+                            {% else %}
+                            <td class="text-danger">-{{ deposit.profit }}$</td>
+                            {% endif %}
+                            <td><a href="{% url 'transactions:edit_deposit' deposit.id %}" type="submit" class="btn ">
+                                <img src="{% static 'imgs/Edit.svg' %}" alt="edit">
+                            </a></td>
+                            <td><a href="{% url 'transactions:delete_deposit' delete_id=deposit.id %}" type="submit" class="btn">
+                                <img src="{% static 'imgs/Bin.svg' %}" alt="edit">
+                            </a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
 
 <script src="{% static 'navigation.js' %}"></script>
-{#<div class="row">#}
-{#    <div class="col-10 offset-1 d-flex justify-content-between align-items-center mb-4">#}
-{#        <div class="title-credit-deposit">Your deposits:</div>#}
-{#        <div class="add-credit-deposit"><a href="">+ Add</a></div>#}
-{#    </div>#}
-{##}
-{#    <div class="col-10 offset-1 cr-dp-table-wrapper">#}
-{#    <div class="cr-dp-table">#}
-{#      <div class="cr-dp-row-top d-flex flex-row justify-content-between align-items-center">#}
-{#        <div class="col-2 cr-dp-elem">deposit</div>#}
-{#        <div class="col-2 cr-dp-elem">percent %</div>#}
-{#        <div class="col-2 cr-dp-elem">the amount after a month</div>#}
-{#        <div class="col-2 cr-dp-elem">profit</div>#}
-{#        <div class="col-2 cr-dp-elem">start date</div>#}
-{#        <div class="col-2"></div>#}
-{#      </div>#}
-{#      <div class="cr-dp-row d-flex flex-row justify-content-between align-items-center">#}
-{#        <div class="col-2 cr-dp-elem">$3000</div>#}
-{#        <div class="col-2 cr-dp-elem">1.2%</div>#}
-{#        <div class="col-2 cr-dp-elem">21d</div>#}
-{#        <div class="col-2 cr-dp-elem">12</div>#}
-{#        <div class="col-2 cr-dp-elem">12.01.2023</div>#}
-{#        <div class="col-2"><button type="button" class="btn cr-dp-btn">Close</button></div>#}
-{#      </div>#}
-{#      <div class="cr-dp-row d-flex flex-row justify-content-between align-items-center">#}
-{#        <div class="col-2 cr-dp-elem">$3000</div>#}
-{#        <div class="col-2 cr-dp-elem">1.2%</div>#}
-{#        <div class="col-2 cr-dp-elem">21d</div>#}
-{#        <div class="col-2 cr-dp-elemcr-dp-elem">12</div>#}
-{#        <div class="col-2 cr-dp-elem">12.01.2023</div>#}
-{#        <div class="col-2"><button type="button" class="btn cr-dp-btn">Close</button></div>#}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
-{#</div>#}
 {% endblock %}

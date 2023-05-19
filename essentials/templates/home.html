@@ -4,13 +4,20 @@
 {% block body %}
 {% if user.is_authenticated %}
 <div class="row">
-  <div class="col-6 col-lg-3 offset-1">
-    <div class="mb-4 section-title text-center h1">General</div>
-    <div class="d-flex flex-row justify-content-center mb-4 h5">
-      <input type="date" id="date-start" name="date" />
-      <span> - </span>
-      <input type="date" id="date-end" name="date" />
+  <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-1 home_responsivnes" style=";">
+    <div class="mb-4 section-title text-center fs-1">General</div>
+    <form action="{% url 'transactions:search_transactions' %}" method="GET">
+    <div class="d-flex flex-row justify-content-between">
+      <p>From</p>
+      <p style="margin-right: 8.5rem">To</p>
     </div>
+    <div class="d-flex flex-row justify-content-center mb-4 h5">
+      <input type="date" id="date-start" name="from_date" />
+      <strong>/</strong>
+      <input type="date" id="date-end" name="to_date" />
+    </div>
+    <button type="submit" class="btn btn-outline-primary mb-5" style="width: 100%">Search ✔️</button>
+    </form>
     <div class="diagram"></div>
     <div class="section-title">Total:</div>
     <div class="custom-list">
@@ -19,47 +26,74 @@
           <div class="list-bullet" id="dark-green"></div>
           <div class="section-title">Income</div>
         </div>
-        <div class="income-info">+$$$$$$</div>
+        <div class="income-info btn btn-outline-warning"><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+$$$$$$</a></div>
       </div>
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
           <div class="list-bullet" id="light-green"></div>
           <div class="section-title">Expenses</div>
         </div>
-        <div class="expenses-info">-$$$$$$</div>
+        <div class="expenses-info btn btn-outline-warning"><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">-$$$$$$</a></div>
       </div>
     </div>
     <div class="d-flex flex-column gap-4 btns-wrapper">
-      <button type="button" class="btn home-button mx-auto">Add income</button>
-      <button type="button" class="btn home-button mx-auto">Add expenses</button>
+        <a href="{% url 'transactions:add_income'  %}" class="btn home-button mx-auto" style="width: 100%">Add Income</a>
+        <a href="{% url 'transactions:add_expense' %} " class="btn  home-button mx-auto" style="width: 100%">Add Expense</a>
     </div>
   </div>
-  <div class="col-6 col-lg-6 offset-1 shadow p-3 rounded">
+  <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-1 mt-4 mt-md-0 shadow p-3 rounded home_responsivnes second_div">
     <div class="d-flex flex-row justify-content-between">
       <div class="mb-3 section-title">Transaction history:</div>
-      <a href="#" class="view-more">View more ></a>
     </div>
-    <div class="table">
-      {% for transaction in transactions %}
-        <div class="table-row d-flex flex-row justify-content-between align-items-center border-bottom">
-          <div class="transaction-price">{{ transaction.amount }}$</div>
-          <div class="transaction-date">{{ transaction.created_at }}</div>
-          <div class="transaction-category">{{ transaction.category }}</div>
-          <div class="d-flex">
-            <div class="icon-edit">
-              <img src="../static/imgs/Edit.svg" alt="edit-icon">
+    {% if transactions %}
+        <div class="table">
+            {% for transaction in transactions reversed %}
+            <div class="table-row d-flex flex-row justify-content-between align-items-center border-bottom">
+              <div class="transaction-price">{{ transaction.amount }}$</div>
+              <div class="transaction-date">{{ transaction.created_at }}</div>
+              <div class="transaction-category">{{ transaction.category }}</div>
+              <div class="d-flex">
+{#                  <p style="font-size: 10px" class="text-success">I</p>#}
+                <a href="{% url 'transactions:edit_income' transaction.id %}" class="icon-edit mi-custom">
+                  <img src="{% static 'imgs/Edit.svg' %}" alt="edit-icon" >
+                </a>
+{#                  <p style="font-size: 10px" class="text-danger">E</p>#}
+                <form class="mi-custom2" action="{% url 'transactions:delete_transaction' transaction.id %}" method="POST">
+                  {% csrf_token %}
+                    <a type="submit" href="{% url 'transactions:edit_expense' transaction.id %}" class="icon-edit">
+                      <img src="{% static 'imgs/Edit.svg' %}" alt="edit-icon">
+                    </a>
+                </form>
+
+                <a href="{% url 'transactions:delete_transaction' transaction.id %}" class="icon-bin mi-custom2">
+                  <img src="{% static 'imgs/Bin.svg' %}" alt="bin-icon">
+                </a>
+              </div>
             </div>
-            <div class="icon-bin">
-              <img src="../static/imgs/Bin.svg" alt="bin-icon">
+            {% endfor %}
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Coming Soon! 🥳</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                This feature is coming soon! Be the first one to test it out 😎
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      {% endfor %}
-    </div>
+    {% endif %}
   </div>
 </div>
-
 {% else %}
-<h1>Welcome!</h1>
+<h1>Welcome! ⭐️</h1>
+<h2>To gain full access, please login <a href="{% url 'users:login' %}">here</a></h2>
 {% endif %}
 {% endblock %}
