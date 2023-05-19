@@ -124,3 +124,63 @@
 .btns-wrapper {
   margin: 61px 0;
 }
+
+
+/* -------------------------------DEPOSIT----------------------------------------- */
+
+.range{
+  display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    margin-top: 10px;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  border: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #096667;
+  margin-top: -7px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  border: none;
+  border-radius: 6px;
+  height: 10px;
+  background: #47b399;
+}
+
+.btn-success{
+  background: #47b399;
+}
+
+.rangeNum{
+  width: 20%;
+}
+
+.upperText{
+  display: flex;
+  justify-content: space-between;
+}
+
+.lowerText1{
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 8px;
+}
+
+.lowerText2{
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-around;
+}
