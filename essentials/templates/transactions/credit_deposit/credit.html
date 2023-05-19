@@ -63,16 +63,16 @@
                                 <th class="">{{ credit.amount }}$</th>
                                 <td>{{ credit.percentage }}%</td>
 
-                                {% if credit.percentage == 13.9 %}
-                                <td class="text-success">+{{ credit.profit }}$</td>
-                                {% else %}
-                                <td class="text-danger">-{{ credit.profit }}$</td>
-                                {% endif %}
+                                    {% if credit.percentage == 11.5 %}
+                                        <td class="text-success">+{{ credit.profit }}$</td>
+                                    {% else %}
+                                        <td class="text-danger">-{{ credit.profit }}$</td>
+                                    {% endif %}
 
                                 <td><a href="{% url 'transactions:edit_credit' credit.id %}" type="submit" class="btn ">
                                     <img src="{% static 'imgs/Edit.svg' %}" alt="edit">
                                 </a></td>
-                                <td><a href="{% url 'transactions:delete_credit' credit.id %}" type="submit" class="btn">
+                                <td><a href="{% url 'transactions:delete_credit' credit_id=credit.id %}" type="submit" class="btn">
                                     <img src="{% static 'imgs/Bin.svg' %}" alt="delete">
                                 </a></td>
                             </tr>

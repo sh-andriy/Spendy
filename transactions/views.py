@@ -182,9 +182,9 @@ def delete_transaction(request, transaction_id):
 @login_required
 def credit(request):
     if request.method == 'POST':
-        amount = request.POST.get('credit_amount', 0)
-        income = request.POST.get('credit_income', 0)
-        loss = request.POST.get('credit_loss', 0)
+        amount = request.POST['credit_amount']
+        income = request.POST['credit_income']
+        loss = request.POST['credit_loss']
 
         credit = CreditDeposit(
             balance=Balance.objects.get(user=request.user),
@@ -212,9 +212,9 @@ def edit_credit(request, credit_id):
     credit = get_object_or_404(CreditDeposit, id=credit_id)
 
     if request.method == 'POST':
-        amount = request.POST.get('credit_amount', 0)
-        income = request.POST.get('credit_income', 0)
-        loss = request.POST.get('credit_loss', 0)
+        amount = request.POST['credit_amount']
+        income = request.POST['credit_income']
+        loss = request.POST['credit_loss']
 
         credit.amount = amount
         credit.income = income
