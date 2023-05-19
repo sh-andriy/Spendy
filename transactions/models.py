@@ -37,7 +37,7 @@ class CreditDeposit(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     balance = models.ForeignKey(Balance, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, default=0, decimal_places=3)
-    #
-    # percentage = models.
-    # years =
-    # total = сума
+    years = models.IntegerField(default=1)
+    income = models.DecimalField(max_digits=15, default=0, decimal_places=3)
+    profit = models.DecimalField(max_digits=15, default=0, decimal_places=3)
+    percentage = models.DecimalField(max_digits=5, default=0, decimal_places=1)

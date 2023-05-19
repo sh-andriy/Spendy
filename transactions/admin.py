@@ -36,8 +36,8 @@ class TransactionAdmin(admin.ModelAdmin):
 
 @admin.register(CreditDeposit)
 class CreditDepositAdmin(admin.ModelAdmin):
-    list_display = ("id", 'balance', 'amount')
-    search_fields = ("id", 'balance', 'amount')
+    list_display = ('amount', 'years', 'income', 'profit')
+    search_fields = ('amount', 'years', 'income', 'profit')
 
     filter_horizontal = ()
     list_filter = ()

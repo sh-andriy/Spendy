@@ -2,7 +2,109 @@
 {% load static %}
 
 {% block body %}
+<h1 class="page-name text-center">Add Credit</h1>
+<div class="row">
+  <div class="col-lg-6 col-md-12 income-form mx-auto bg-light  border-bottom rounded shadow p-4 mt-5">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <div class="upperText">
+          <label for="inputNumber" class="form-label">Amount</label>
+          <input type="number" class="rangeNum" name="credit_amount" id="inputNumber" value="0" min="0" max="100000" oninput="cloneValue(this.value)">
+        </div>
+        <input type="range" class="range" id="range" min="0" max="100000" step="1" value="0" oninput="getRange(this.value)" />
+        <div class="lowerText1">
+          <label class="form-label text-center">0</label>
+          <label class="form-label text-center">100.000</label>
+        </div>
+        <div class="lowerText2">
+          <label class="form-label text-center">
+            Yearly Payment<br>
+            <p id="yearlyPayment">0</p>
+            <input type="hidden" name="credit_payment" value="0" id="creditPaymentField">
+          </label>
+          <label class="form-label text-center">
+            Additional Payment<br>
+            <p id="profitValue">0</p>
+            <input type="hidden" name="credit_profit" value="0" id="creditProfitField">
+          </label>
+          <label class="form-label text-center">
+            Annual percentage<br>
+            7%
+          </label>
+        </div>
+      </div>
 
-<h1 class="page-name text-center">Credit</h1>
+      <div class="d-flex justify-content-center gap-3">
+        <button type="submit" class="btn btn-success">Add</button>
+        <button class="btn btn-outline-success">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function percentage(percent, total) {
+    return ((total/100)*percent).toFixed(2)
+}
+
+function getRange(val){
+    const result = parseFloat(val) + parseFloat(percentage(7, val));
+    document.getElementById("yearlyPayment").innerHTML = result.toFixed(2);
+    document.getElementById("inputNumber").value = val;
+    document.getElementById("profitValue").innerText = parseFloat(percentage(7, val));
+}
+
+function cloneValue(val) {
+    if(val > 100000){
+        val = 100000;
+        inputNumber.value = val;
+    } else if(val <= 0){
+        val = 0;
+        inputNumber.value = val;
+    }
+    document.getElementById("range").value = val;
+    const result = parseFloat(val) + parseFloat(percentage(7, val));
+    document.getElementById("yearlyPayment").innerHTML = result.toFixed(2);
+    document.getElementById("profitValue").innerText = parseFloat(percentage(7, val));
+}
+</script>
+
+<div class="row">
+    <div class="col-10 offset-1 d-flex justify-content-between align-items-center mb-4">
+        <div class="title-credit-deposit">Your credits:</div>
+        <div class="add-credit-deposit"><a href="">+ Add</a></div>
+    </div>
+
+    <div class="col-10 offset-1 cr-dp-table-wrapper">
+        <div class="cr-dp-table">
+            <div class="cr-dp-row-top d-flex flex-row justify-content-between align-items-center">
+                <div class="col-2 cr-dp-elem">credit</div>
+                <div class="col-2 cr-dp-elem">percent %</div>
+                <div class="col-2 cr-dp-elem">income</div>
+                <div class="col-2 cr-dp-elem">profit</div>
+                <div class="col-2"></div>
+            </div>
+
+          {% for credit in credits %}
+            <div class="table-row d-flex flex-row justify-content-between align-items-center border-bottom">
+              <div class="transaction-price">{{ credit.amount }}$</div>
+              <div class="transaction-date">{{ credit.percentage }}</div>
+              <div class="transaction-category">{{ credit.income}}</div>
+                <div class="transaction-category">{{ credit.profit}}</div>
+              <div class="d-flex">
+                <div class="icon-edit">
+                  <img src="../static/imgs/Edit.svg" alt="edit-icon">
+                </div>
+                <div class="icon-bin">
+                  <img src="../static/imgs/Bin.svg" alt="bin-icon">
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

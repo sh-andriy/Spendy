@@ -52,31 +52,38 @@
 // }
 
 
-// ---------------------------------DEPOSIT-------------------------------------
-
+//--------------------------------------DEPOSIT---------------------------------------------
 
 function percentage(percent, total) {
-    return ((total/100)*percent).toFixed(2)
+  return ((parseFloat(total) / 100) * percent).toFixed(2);
 }
 
+function getRange(val) {
+  const result = parseFloat(val) + parseFloat(percentage(11.5, val));
+  document.getElementById("potentialIncome").innerHTML = result;
+  document.getElementById("inputNumber").value = val;
+  document.getElementById("profitValue").innerText = parseFloat(percentage(11.5, val));
 
-function getRange(val){
-    const result = parseFloat(val) + parseFloat(percentage(11.5, val));
-    document.getElementById("potentialIncome").innerHTML = result;
-    document.getElementById("inputNumber").value = val;
-    document.getElementById("profitValue").innerText = parseFloat(percentage(11.5, val));
+  // Update hidden input field values
+  document.getElementById("depositIncomeField").value = result;
+  document.getElementById("depositProfitField").value = parseFloat(percentage(11.5, val));
 }
 
 function cloneValue(val) {
-    if(val > 100000){
-        val = 100000;
-        inputNumber.value = val;
-    }else if(val <= 0){
-        val = 0;
-        inputNumber.value = val;
-    }
-    document.getElementById("range").value = val;
-    const result = parseFloat(val) + parseFloat(percentage(11.5, val));
-    document.getElementById("potentialIncome").innerHTML = result.toFixed(2);
-    document.getElementById("profitValue").innerText = parseFloat(percentage(11.5, val));
+  if (val > 100000) {
+    val = 100000;
+    inputNumber.value = val;
+  } else if (val <= 0) {
+    val = 0;
+    inputNumber.value = val;
+  }
+  document.getElementById("range").value = val;
+  const result = parseFloat(val) + parseFloat(percentage(11.5, val));
+  document.getElementById("potentialIncome").innerHTML = result.toFixed(2);
+  document.getElementById("profitValue").innerText = parseFloat(percentage(11.5, val));
+
+  // Update hidden input field values
+  document.getElementById("depositIncomeField").value = result.toFixed(2);
+  document.getElementById("depositProfitField").value = parseFloat(percentage(11.5, val));
 }
+
