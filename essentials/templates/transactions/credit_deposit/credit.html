@@ -3,6 +3,40 @@
 
 {% block body %}
 
-<h1 class="page-name text-center">Credit</h1>
+<div class="row">
+    <div class="col-10 offset-1 d-flex justify-content-between align-items-center mb-4">
+        <div class="title-credit-deposit">Your credits:</div>
+        <div class="add-credit-deposit"><a href="">+ Add</a></div>
+    </div>
+
+    <div class="col-10 offset-1 cr-dp-table-wrapper">
+    <div class="cr-dp-table">
+      <div class="cr-dp-row-top d-flex flex-row justify-content-between align-items-center">
+        <div class="col-2 cr-dp-elem">credit</div>
+        <div class="col-2 cr-dp-elem">percent %</div>
+        <div class="col-2 cr-dp-elem">days until payment</div>
+        <div class="col-2 cr-dp-elem">months until payment</div>
+        <div class="col-2 cr-dp-elem">start date</div>
+        <div class="col-2"></div>
+      </div>
+      <div class="cr-dp-row d-flex flex-row justify-content-between align-items-center">
+        <div class="col-2 cr-dp-elem">$3000</div>
+        <div class="col-2 cr-dp-elem">1.2%</div>
+        <div class="col-2 cr-dp-elem">21d</div>
+        <div class="col-2 cr-dp-elem">12</div>
+        <div class="col-2 cr-dp-elem">12.01.2023</div>
+        <div class="col-2"><button type="button" class="btn cr-dp-btn">Pay out</button></div>
+      </div>
+      <div class="cr-dp-row d-flex flex-row justify-content-between align-items-center">
+        <div class="col-2 cr-dp-elem">$3000</div>
+        <div class="col-2 cr-dp-elem">1.2%</div>
+        <div class="col-2 cr-dp-elem">21d</div>
+        <div class="col-2 cr-dp-elem">12</div>
+        <div class="col-2 cr-dp-elem">12.01.2023</div>
+        <div class="col-2"><button type="button" class="btn cr-dp-btn">Pay out</button></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

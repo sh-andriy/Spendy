@@ -3,15 +3,16 @@
 
 {% block body %}
 
-<h1 class="page-name text-center">Add Expense</h1>
 <div class="row">
   <div
-    class="col-lg-6 col-md-12 income-form mx-auto bg-light border border-secondary rounded"
+    class="income-expenses-form col-lg-5 col-md-10 mx-auto mt-4"
   >
+<div class="income-expenses-title mb-3">Add Expense</div>
+
     <form method="POST">
     {% csrf_token %}
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Category</label>
+        <label for="expense_category" class="form-label">Category</label>
         <select class="form-select" aria-label="Default select example" name="expense_category">
             {% for category in categories %}
                 <option value="{{ category.id }}">{{ category.name }}</option>
@@ -23,8 +24,8 @@
         <input type="number" class="form-control" id="inputNumber" name="expense_amount"/>
       </div>
       <div class="d-flex justify-content-center gap-3">
-        <button type="submit" class="btn btn-success">Add</button>
-        <button class="btn btn-outline-success">Cancel</button>
+        <button type="submit" class="btn btn-add">Add</button>
+        <button class="btn btn-cancel">Cancel</button>
       </div>
     </form>
   </div>

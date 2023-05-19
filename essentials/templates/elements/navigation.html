@@ -22,7 +22,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse m-auto" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
+            <div class="d-flex flex-column flex-lg-row gap-lg-4">
             <li class="nav-item">
               <a
                 class="nav-link active"
@@ -40,9 +41,6 @@
             {% endif %}
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'users:logout' %}"> Sign Out </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{% url 'transactions:add_income' %}">
                 Add Income
               </a>
@@ -51,7 +49,8 @@
               <a class="nav-link" href="{% url 'transactions:add_expense' %}">
                 Add Expense
               </a>
-            <li class="nav-item ">
+            </li>
+              <li class="nav-item ">
                 <a class="nav-link" href="{% url 'transactions:credit' %}">
                     Credit
                 </a>
@@ -71,6 +70,15 @@
                     {{ user_balance.amount }}
                 </p>
             </li>
+            </div>
+            <div class="d-flex gap-2">
+              <li class="nav-item">
+                <a class="nav-link" href=""><img class="navbar-icon" src="../../static/imgs/profile.svg" alt="profile"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:logout' %}"><img class="navbar-icon" src="../../static/imgs/logout.svg" alt="logout"></a>
+              </li>
+            </div>
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'users:login' %}"> Sign In </a>

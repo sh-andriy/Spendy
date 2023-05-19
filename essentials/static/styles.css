@@ -4,6 +4,10 @@
   font-family: Montserrat, sans-serif;
 }
 
+body {
+  background-color: #F6F6F6;
+}
+
 .accent-style {
   font-family: "Lobster Two", cursive;
 }
@@ -41,10 +45,7 @@
 .sidebar-logo {
   height: 15px;
   width: auto;
-}
-
-.income-form {
-  padding: 20px;
+  margin-right: 60px;
 }
 
 .page-name {
@@ -55,13 +56,39 @@
   background-color: #99e2b4;
 }
 
+.navbar-nav {
+  width: 100%;
+}
+
+.navbar-icon {
+  height: 25px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item p {
+  margin: 0;
+}
+
+.nav-link {
+  color: #096667;
+  font-weight: 500;
+}
+
+.nav-link.active {
+  color: #096667 !important;
+}
+
 /*--------------------------------HOME---------------------------------------*/
 
 .list-bullet {
   width: 16px;
   height: 16px;
   border-radius: 100%;
-  margin-right: 29px;
+  margin-right: 15px;
 }
 
 #light-green {
@@ -76,27 +103,59 @@
   background-color: #469D89;
   color: white;
   width: 50%;
+  width: fit-content;
 }
 
 .view-more {
   text-decoration: none;
+  color: #096667;
+  font-weight: 500;
+}
+
+.table-wrapper {
+  border-radius: 19px;
+  width: 100%;
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 65vh;
+  margin-bottom: 60px;
 }
 
 .table {
-  background-color: #ECECEC;
+  background-color: white;
   border-radius: 19px;
   width: 100%;
   height: fit-content;
   box-sizing: border-box;
   padding: 25px;
+  overflow-y: auto;
+  height: 65vh;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.transaction-date {
+  color: #767676;
+  text-align: center;
+  width: 30%;
 }
 
 .transaction-category {
   text-align: center;
+  color: #096667;
+  width: 25%;
 }
 
-.transaction-price, .transaction-category, .transaction-date {
-  width: 25%;
+.transaction-price {
+  width: 20%;
+}
+
+#red {
+  color: #DA5A5A;
+}
+
+#green {
+  color: #3BC849;
 }
 
 .section-title {
@@ -105,22 +164,164 @@
   font-weight: 500;
 }
 
+.title {
+  font-size: 18px;
+}
+
 .income-info, .expenses-info {
   padding: 4px 5px;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: #096667;
   border-radius: 11px;
 }
 
 .expenses-info {
-  background-color: #E29999;
+  background-color: #EBC2C2;
 }
 
 .income-info {
-  background-color: #99E2B4;
+  background-color: #C2EBD1;
 }
 
 .btns-wrapper {
   margin: 61px 0;
+}
+
+.date {
+  color: #767676;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+#date-start, #date-end {
+  border: none;
+  background-color: transparent;
+}
+
+/*-------------------------------------------------LOGIN/SIGNUP-------------------------------------------------------------------*/
+
+.login-form, .signup-form {
+  background-color: white;
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 19px;
+}
+
+.account-button {
+  border: 2px solid #469D89;
+  font-weight: 500;
+  font-size: 20px;
+  color: #469D89;
+}
+
+.account-button:hover {
+  background-color: #469D89;
+  color: white;
+}
+
+.account-link a {
+  font-weight: 500;
+  color: #096667;
+}
+
+/*----------------------------------------------------------CREDIT/DEPOSIT----------------------------------------------------------------------------------------------------*/
+
+.cr-dp-row {
+  border-bottom: 1px solid #CFCFCF;
+}
+
+.cr-dp-row-top {
+  border-bottom: 1px solid #CFCFCF;
+  border-top: 1px solid #CFCFCF;
+}
+
+.cr-dp-table-wrapper {
+  border-radius: 19px;
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 65vh;
+  margin-bottom: 60px;
+  padding: 0;
+}
+
+.cr-dp-table {
+  background-color: white;
+  border-radius: 19px;
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 25px;
+  overflow-y: auto;
+  height: 65vh;
+  font-weight: 500;
+}
+
+.cr-dp-btn {
+  padding: 5px 10px;
+  background-color: #469D89;
+  border-radius: 9px;
+  color: white;
+  margin: 18px 0;
+}
+
+.cr-dp-row-top div {
+  color: #096667;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cr-dp-row div {
+  color: #096667;
+  font-size: 16px;
+  text-align: center;
+}
+
+.title-credit-deposit {
+  font-weight: 500;
+  font-size: 24px;
+  color: #096667;
+}
+
+.add-credit-deposit a {
+  font-weight: 500;
+  font-size: 20px;
+  color: #096667;
+  text-decoration: none;
+}
+
+/*------------------------------------------INCOME/EXPENSES--------------------------------------------------------------------*/
+
+.income-expenses-form {
+  background-color: white;
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.income-expenses-title {
+  font-weight: 500;
+  font-size: 26px;
+  color: #096667;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 20px;
+  color: #258277;
+}
+
+.btn-add {
+  padding: 5px 10px;
+  background-color: #469D89;
+  border-radius: 9px;
+  color: white;
+}
+
+.btn-cancel {
+  padding: 5px 10px;
+  border: 1px solid #469D89;
+  border-radius: 9px;
+  color: #767676;
 }
